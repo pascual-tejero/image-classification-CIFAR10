@@ -1,4 +1,4 @@
-# Image classification CNN on CIFAR10 dataset
+# Image classification on CIFAR10 dataset
 
 This README provides a step-by-step guide to create a Convolutional Neural Network (CNN) for image classification on the CIFAR-10 dataset using Python and popular machine learning libraries like PyTorch. The process can be broken down into the following key steps:
 
