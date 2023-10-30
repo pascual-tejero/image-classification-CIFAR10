@@ -1,7 +1,5 @@
 # CIFAR-10 Image Classification using LeNet-5-inspired Neural Network
 
-![CIFAR-10 Image Classification](cifar-10-image.jpg)
-
 This repository contains a neural network for image classification using the CIFAR-10 dataset. The network architecture is inspired by LeNet-5, and it is trained to classify images into one of ten classes. In this README, we'll provide an in-depth overview of the network architecture, the training process, and the evaluation metrics used.
 
 ## Network Architecture
