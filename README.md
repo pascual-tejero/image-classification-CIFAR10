@@ -1,29 +1,103 @@
-# Image classification on CIFAR10 dataset
+# CIFAR-10 Image Classification using LeNet-5-inspired Neural Network
 
-This README provides a step-by-step guide to create a Convolutional Neural Network (CNN) for image classification on the CIFAR-10 dataset using Python and popular machine learning libraries like PyTorch. The process can be broken down into the following key steps:
+![CIFAR-10 Image Classification](cifar-10-image.jpg)
 
-## Step 1: Load and Normalize CIFAR-10 Data
+This repository contains a neural network for image classification using the CIFAR-10 dataset. The network architecture is inspired by LeNet-5, and it is trained to classify images into one of ten classes. In this README, we'll provide an in-depth overview of the network architecture, the training process, and the evaluation metrics used.
 
-The first step is to prepare your dataset. In this case, we're working with the CIFAR-10 dataset, which contains 60,000 32x32 color images in 10 distinct classes. It's essential to load the data and perform necessary pre-processing. Data loading and normalization typically include resizing, data augmentation, and standardization. The goal is to make the data suitable for model training.
+## Network Architecture
 
-## Step 2: Define a Convolutional Neural Network (CNN)
+The neural network architecture used in this project is inspired by LeNet-5. It consists of several layers designed to extract features and make predictions. The architecture is defined as follows:
 
-A Convolutional Neural Network is the foundation of image classification tasks. This step involves designing the architecture of your CNN. This design should include convolutional layers for feature extraction, pooling layers for down-sampling, and fully connected layers for classification. You need to decide on the number of layers, filter sizes, and activation functions that suit your specific problem.
+1. **Convolutional Layer (Layer 1):**
+   - 6 filters
+   - 5x5 kernel
+   - ReLU activation function
 
-## Step 3: Define a Loss Function and Optimizer
+2. **Max Pooling Layer (Layer 2):**
+   - 2x2 kernel
 
-To train your CNN, you need to define two critical components: the loss function and the optimizer. The loss function measures the dissimilarity between the model's predictions and the ground truth labels. Common choices for image classification include Cross-Entropy and Softmax loss. The optimizer, like Stochastic Gradient Descent (SGD) or Adam, dictates how the model's parameters are updated during training. The choice of these components can greatly influence the network's performance.
+3. **Convolutional Layer (Layer 3):**
+   - 16 filters
+   - 5x5 kernel
+   - ReLU activation function
 
-## Step 4: Train the Network
+4. **Max Pooling Layer (Layer 4):**
+   - 2x2 kernel
 
-Training your CNN involves presenting the training data to the model, computing the loss, and then backpropagating to update the model's parameters. This process is repeated for a specified number of epochs. Training also involves choosing hyperparameters such as batch size and learning rate. You may need to monitor the model's performance on a validation set during training and potentially employ techniques like learning rate scheduling or early stopping to improve results and prevent overfitting.
+5. **Fully Connected Layer (Layer 5):**
+   - 120 neurons
+   - ReLU activation function
 
-## Step 5: Test the Network on the Test Data
+6. **Dropout Layer (Layer 6):**
+   - 20% dropout probability
 
-Once your model has been trained, it's crucial to evaluate its performance on a separate test dataset that it has never seen before. This step provides an accurate assessment of your model's generalization capabilities. You'll compute metrics such as accuracy, precision, recall, and F1-score to understand how well the model performs on the task of classifying unseen images. Additionally, you can use techniques like confusion matrices to gain insights into the model's strengths and weaknesses.
+7. **Fully Connected Layer (Layer 7):**
+   - 84 neurons
+   - ReLU activation function
 
-In summary, building a CNN for image classification on the CIFAR-10 dataset involves a sequence of key steps: preparing the data, designing the neural network architecture, selecting appropriate loss functions and optimizers, training the model, and rigorously evaluating its performance on a test dataset. This process requires a balance of domain knowledge, creativity in model design, and meticulous attention to training and evaluation. The quality of each of these steps can significantly impact the overall success of your image classification task.
+8. **Dropout Layer (Layer 8):**
+   - 20% dropout probability
 
+9. **Fully Connected Layer (Layer 9):**
+   - 10 neurons
+   - Softmax activation function
 
+The network is trained using the Cross-Entropy Loss function and the Stochastic Gradient Descent (SGD) optimizer.
 
+## Training
+
+The training process is an essential part of building an effective image classification model. Here's an overview of the training procedure:
+
+- The network was trained for 20 epochs, with each epoch representing a complete pass through the training dataset.
+
+- A batch size of 4 was used, which means that the model was updated after processing each batch of 4 images.
+
+- The CIFAR-10 dataset was split into three subsets: the training set, the validation set, and the test set. Approximately 45,000 images were used for training, 5,000 for validation, and the remaining images for testing.
+
+- The Adam optimizer was employed to minimize the Cross-Entropy Loss function. The validation set was used to monitor training progress and to prevent overfitting by selecting the model with the lowest validation loss.
+
+## Evaluation Metrics
+
+After training, the model's performance was evaluated using several key metrics to assess its accuracy and effectiveness in classifying images into the ten CIFAR-10 classes. The following metrics were calculated:
+
+- **Accuracy:** The ratio of correctly classified images to the total number of test images.
+
+- **Precision:** The ratio of true positives to the sum of true positives and false positives.
+
+- **Recall:** The ratio of true positives to the sum of true positives and false negatives.
+
+- **Specificity:** The ratio of true negatives to the sum of true negatives and false positives.
+
+- **F1 Score:** The F1 score is the harmonic mean of precision and recall, providing a balanced measure of model performance.
+
+These metrics provide insights into how well the model is performing and its ability to correctly classify images across the ten classes in the CIFAR-10 dataset.
+
+## Usage
+
+To use this image classification model for your own projects, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Install the required dependencies using the appropriate package manager for your Python environment.
+3. Run the main script to train the model on your machine.
+4. Customize the hyperparameters and model architecture to suit your specific use case.
+
+## Run
+
+The primary code for this project can be found in the main script, `main.py`. It includes loading the CIFAR-10 dataset, defining the model architecture, training the model, and evaluating its performance on the test dataset.
+
+```python
+python main.py
+```
+
+## License
+
+This project is licensed under the MIT License. You can find the full details in the LICENSE.md file.
+
+## Acknowledgments
+
+We would like to express our gratitude to the creators of the CIFAR-10 dataset and the authors of LeNet-5 for their valuable contributions to the field of image classification.
+
+Feel free to explore the code, run experiments, and adapt the model to your own image classification tasks. If you have any questions or suggestions, please don't hesitate to reach out to us.
+
+Happy classifying!
 
