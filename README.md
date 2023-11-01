@@ -1,4 +1,4 @@
-# CIFAR-10 Image Classification using LeNet-5-inspired Neural Network
+# CIFAR-10 Image Classification using LeNet-5-inspired Neural Network and ResNet-18
 
 This project is an image classification task using the CIFAR-10 dataset. We provide implementations of two different neural network architectures, LeNet-5 and ResNet-18, for image classification. The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 different classes, with 6,000 images per class.
 
