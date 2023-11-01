@@ -28,11 +28,11 @@ The project directory is organized as follows:
 
 - **models/**
 
-  The `models` folder contains two subfolders:
+  The `models` folder contains two Python files:
 
-  - `LeNet5/`: This folder holds the implementation of a LeNet-5 inspired neural network. You can explore the contents of this folder to learn more about its architecture.
+  - `LeNet5.py`: This file holds the implementation of a LeNet-5 inspired neural network. You can explore the contents of this file to learn more about its architecture.
 
-  - `ResNet18/`: In this folder, you'll find the implementation of a ResNet-18 model. Details about its architecture and components can be found inside this subfolder.
+  - `ResNet18.py`: In this file, you'll find the implementation of a ResNet-18 model. Details about its architecture and components can be found inside this file.
 
 - **results/**
 
@@ -156,29 +156,6 @@ To use this image classification model for your own projects, follow these steps
 
 7. If you want to visualize images from the dataset, explore the `utils` folder. It contains a Python script named `visualize_data.py` that allows you to visualize and optionally save images.
 
-## Run
-
-The primary code for this project can be found in the main script, `main.py`. Here's how to run it:
-
-1. To initiate the training of a neural network, use the following commands in the `commands` directory:
-
-   - For LeNet5:
-     ```bash
-     cd commands
-     ./train_model.sh --model_name "LeNet5"
-     ```
-
-   - For ResNet18:
-     ```bash
-     cd commands
-     ./train_model.sh --model_name "ResNet18"
-     ```
-
-2. The training script will load the CIFAR-10 dataset, configure hyperparameters, and initiate the training and validation process for the selected model. After training, the model's performance on the test dataset will be evaluated.
-
-```python
-python main.py
-```
 
 ## License
 
