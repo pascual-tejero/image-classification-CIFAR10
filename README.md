@@ -163,9 +163,9 @@ This project is licensed under the MIT License. You can find the full details in
 
 ## Acknowledgments
 
-We would like to express our gratitude to the creators of the CIFAR-10 dataset and the authors of LeNet-5 for their valuable contributions to the field of image classification.
+I extend my gratitude to the creators of the CIFAR-10 dataset, whose efforts have made valuable contributions to the field of image classification. Additionally, I appreciate the advancements and contributions of various researchers and institutions that have influenced the development of image classification techniques.
 
-Feel free to explore the code, run experiments, and adapt the model to your own image classification tasks. If you have any questions or suggestions, please don't hesitate to reach out to us.
+Feel free to explore the code, run experiments, and adapt the model to your specific image classification tasks.
 
 Happy classifying!
 
