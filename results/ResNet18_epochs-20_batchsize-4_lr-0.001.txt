@@ -1,0 +1,6 @@
+TP: 618, TN: 473, FP: 430, FN: 208
+Accuracy: 0.631
+Precision: 0.590
+Recall: 0.748
+Specificity: 0.524
+F1: 0.660

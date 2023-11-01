@@ -1,0 +1,6 @@
+TP: 441, TN: 387, FP: 305, FN: 418
+Accuracy: 0.534
+Precision: 0.591
+Recall: 0.513
+Specificity: 0.559
+F1: 0.550
