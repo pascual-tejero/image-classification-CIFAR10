@@ -1,46 +1,86 @@
 # CIFAR-10 Image Classification using LeNet-5-inspired Neural Network
 
-This repository contains a neural network for image classification using the CIFAR-10 dataset. The network architecture is inspired by LeNet-5, and it is trained to classify images into one of ten classes. In this README, we'll provide an in-depth overview of the network architecture, the training process, and the evaluation metrics used.
+This project is an image classification task using the CIFAR-10 dataset. We provide implementations of two different neural network architectures, LeNet-5 and ResNet-18, for image classification. The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 different classes, with 6,000 images per class.
+
+## Project Structure
+
+The project directory is organized as follows:
+
+- **commands/**
+
+  This folder contains two shell script files for managing different aspects of the project.
+
+  - `train_model.sh`: Use this script to initiate the training of a neural network. It provides options for selecting the neural network architecture and adjusting hyperparameters such as learning rate, batch size, and the number of epochs. For example:
+
+    ```bash
+    cd ..
+    # python main.py --model_name "LeNet5" --epochs 20 --batch_size 4 --lr 0.001
+    python main.py --model_name "ResNet18" --epochs 20 --batch_size 4 --lr 0.001
+    ```
+
+  - `visualize_data.sh`: This script is designed for visualizing images in the dataset. You can run the script to display images and save them if desired. It works in the following way:
+
+    ```bash
+    cd ../utils
+    python visualize_data.py --visualize
+    # python visualize_data.py --visualize --save
+    ```
+
+- **models/**
+
+  The `models` folder contains two subfolders:
+
+  - `LeNet5/`: This folder holds the implementation of a LeNet-5 inspired neural network. You can explore the contents of this folder to learn more about its architecture.
+
+  - `ResNet18/`: In this folder, you'll find the implementation of a ResNet-18 model. Details about its architecture and components can be found inside this subfolder.
+
+- **results/**
+
+  The `results` folder is used to store result files in .txt format. These files include metrics such as true positives (tp), false positives (fp), true negatives (tn), false negatives (fn), recall, precision, specificity, and f1-score. These metrics help assess the performance of the trained models on the test set.
+
+- **saved_models/**
+
+  The `saved_models` directory contains the saved model weights in .pth file format. Each model file represents the best-performing model, selected based on the lowest validation cross-entropy score during training.
+
+- **utils/**
+
+  This folder houses a Python script named `visualize_data.py`. This script allows you to visualize and optionally save images from the dataset. You can explore the script to understand its functionality in more detail.
+
+- **main.py**
+
+  The root directory contains the `main.py` script, which serves as the core of the project. It's responsible for loading the CIFAR-10 dataset, configuring hyperparameters, initiating the training and validation process, and performing the testing stage for the neural networks.
+
+This well-structured project directory makes it easy to manage and experiment with different neural network architectures, hyperparameters, and data visualization while working on your CIFAR-10 image classification task.
 
 ## Network Architecture
 
-The neural network architecture used in this project is inspired by LeNet-5. It consists of several layers designed to extract features and make predictions. The architecture is defined as follows:
+### LeNet-5
 
-1. **Convolutional Layer (Layer 1):**
-   - 6 filters
-   - 5x5 kernel
-   - ReLU activation function
+The LeNet-5 architecture is designed for image classification tasks. It consists of the following layers:
 
-2. **Max Pooling Layer (Layer 2):**
-   - 2x2 kernel
+1. Convolutional layer (6 filters, 5x5 kernel, ReLU activation function)
+2. Max pooling layer (2x2 kernel)
+3. Convolutional layer (16 filters, 5x5 kernel, ReLU activation function)
+4. Max pooling layer (2x2 kernel)
+5. Fully connected layer (120 neurons, ReLU activation function)
+6. Dropout layer (20% dropout probability)
+7. Fully connected layer (84 neurons, ReLU activation function)
+8. Dropout layer (20% dropout probability)
+9. Fully connected layer (10 neurons, Softmax activation function)
 
-3. **Convolutional Layer (Layer 3):**
-   - 16 filters
-   - 5x5 kernel
-   - ReLU activation function
+The LeNet-5 network uses the Cross-Entropy Loss function and the Adam optimizer.
 
-4. **Max Pooling Layer (Layer 4):**
-   - 2x2 kernel
+### ResNet-18
 
-5. **Fully Connected Layer (Layer 5):**
-   - 120 neurons
-   - ReLU activation function
+ResNet-18 is a deeper convolutional neural network that has shown excellent performance in image classification. It consists of the following layers:
 
-6. **Dropout Layer (Layer 6):**
-   - 20% dropout probability
+1. Initial Convolutional layer (64 filters, 7x7 kernel, stride=2, padding=3)
+2. Batch normalization
+3. 4 Residual Blocks, each containing two convolutional layers with batch normalization and ReLU activation
+4. Global Average Pooling layer
+5. Fully connected layer (10 neurons, Softmax activation function)
 
-7. **Fully Connected Layer (Layer 7):**
-   - 84 neurons
-   - ReLU activation function
-
-8. **Dropout Layer (Layer 8):**
-   - 20% dropout probability
-
-9. **Fully Connected Layer (Layer 9):**
-   - 10 neurons
-   - Softmax activation function
-
-The network is trained using the Cross-Entropy Loss function and the Stochastic Gradient Descent (SGD) optimizer.
+The ResNet-18 network also uses the Cross-Entropy Loss function and the Adam optimizer.
 
 ## Training
 
@@ -54,7 +94,7 @@ The training process is an essential part of building an effective image classif
 
 - The Adam optimizer was employed to minimize the Cross-Entropy Loss function. The validation set was used to monitor training progress and to prevent overfitting by selecting the model with the lowest validation loss.
 
-## Evaluation Metrics
+## Results
 
 After training, the model's performance was evaluated using several key metrics to assess its accuracy and effectiveness in classifying images into the ten CIFAR-10 classes. The following metrics were calculated:
 
@@ -70,18 +110,71 @@ After training, the model's performance was evaluated using several key metrics 
 
 These metrics provide insights into how well the model is performing and its ability to correctly classify images across the ten classes in the CIFAR-10 dataset.
 
+Here are the results obtained for each network:
+
+|                   | LeNet5     | ResNet18   |
+|-------------------|------------|------------|
+| True Positives (TP) | 441        | 618        |
+| True Negatives (TN) | 387        | 473        |
+| False Positives (FP) | 305        | 430        |
+| False Negatives (FN) | 418        | 208        |
+| **Accuracy**          | 0.534      | 0.631      |
+| **Precision**         | 0.591      | 0.590      |
+| **Recall**            | 0.513      | 0.748      |
+| **Specificity**       | 0.559      | 0.524      |
+| **F1 Score**          | 0.550      | 0.660      |
+
+
 ## Usage
 
 To use this image classification model for your own projects, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Install the required dependencies using the appropriate package manager for your Python environment.
-3. Run the main script to train the model on your machine.
-4. Customize the hyperparameters and model architecture to suit your specific use case.
+2. Install the required dependencies by using the provided `requirements.txt` file:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Navigate to the `commands` directory to manage different aspects of the project.
+
+   - To initiate the training of a neural network, use `train_model.sh`. It provides options for selecting the neural network architecture and adjusting hyperparameters. For example:
+     ```bash
+     cd commands
+     ./train_model.sh
+     ```
+   - Use `visualize_data.sh` in the `commands` directory for visualizing images in the dataset. You can run the script to display images and save them if desired. It works as follows:
+     ```bash
+     cd commands
+     ./visualize_data.sh
+     ```
+
+4. Explore the `models` directory, which contains two subfolders: `LeNet5/` and `ResNet18/`. Each folder holds the implementation details of its respective neural network architecture.
+
+5. Check the `results` directory for result files in .txt format, including metrics such as true positives, false positives, true negatives, false negatives, recall, precision, specificity, and F1-score. These metrics help assess the performance of the trained models on the test set.
+
+6. The best-performing model weights can be found in the `saved_models` directory in .pth file format.
+
+7. If you want to visualize images from the dataset, explore the `utils` folder. It contains a Python script named `visualize_data.py` that allows you to visualize and optionally save images.
 
 ## Run
 
-The primary code for this project can be found in the main script, `main.py`. It includes loading the CIFAR-10 dataset, defining the model architecture, training the model, and evaluating its performance on the test dataset.
+The primary code for this project can be found in the main script, `main.py`. Here's how to run it:
+
+1. To initiate the training of a neural network, use the following commands in the `commands` directory:
+
+   - For LeNet5:
+     ```bash
+     cd commands
+     ./train_model.sh --model_name "LeNet5"
+     ```
+
+   - For ResNet18:
+     ```bash
+     cd commands
+     ./train_model.sh --model_name "ResNet18"
+     ```
+
+2. The training script will load the CIFAR-10 dataset, configure hyperparameters, and initiate the training and validation process for the selected model. After training, the model's performance on the test dataset will be evaluated.
 
 ```python
 python main.py
