@@ -13,7 +13,6 @@ The project directory is organized as follows:
   - `train_model.sh`: Use this script to initiate the training of a neural network. It provides options for selecting the neural network architecture and adjusting hyperparameters such as learning rate, batch size, and the number of epochs. For example:
 
     ```bash
-    cd ..
     python main.py --model_name "LeNet5" --epochs 20 --batch_size 4 --lr 0.001
     python main.py --model_name "ResNet18" --epochs 20 --batch_size 4 --lr 0.001
     ```
@@ -21,7 +20,6 @@ The project directory is organized as follows:
   - `visualize_data.sh`: This script is designed for visualizing images in the dataset. You can run the script to display images and save them if desired. It works in the following way:
 
     ```bash
-    cd ../utils
     python visualize_data.py --visualize --save
     ```
 
