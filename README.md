@@ -137,12 +137,12 @@ To use this image classification model for your own projects, follow these steps
    - To initiate the training of a neural network, use `train_model.sh`. It provides options for selecting the neural network architecture and adjusting hyperparameters. For example:
      ```bash
      cd commands
-     ./train_model.sh
+     bash train_model.sh
      ```
    - Use `visualize_data.sh` in the `commands` directory for visualizing images in the dataset. You can run the script to display images and save them if desired. It works as follows:
      ```bash
      cd commands
-     ./visualize_data.sh
+     bash visualize_data.sh
      ```
 
 4. Explore the `models` directory, which contains two subfolders: `LeNet5/` and `ResNet18/`. Each folder holds the implementation details of its respective neural network architecture.
