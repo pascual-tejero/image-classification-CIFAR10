@@ -127,12 +127,17 @@ Here are the results obtained for each network:
 To use this image classification model for your own projects, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Install the required dependencies by using the provided `requirements.txt` file:
+2. Create and activate a conda environment:
+   ```bash
+   conda create --name im_class_CIFAR10
+   conda activate myenv
+   ```
+4. Install the required dependencies by using the provided `requirements.txt` file:
 
    ```bash
    pip install -r requirements.txt
    ```
-3. Navigate to the `commands` directory to manage different aspects of the project.
+5. Navigate to the `commands` directory to manage different aspects of the project.
 
    - To initiate the training of a neural network, use `train_model.sh`. It provides options for selecting the neural network architecture and adjusting hyperparameters. For example:
      ```bash
@@ -145,13 +150,13 @@ To use this image classification model for your own projects, follow these steps
      bash visualize_data.sh
      ```
 
-4. Explore the `models` directory, which contains two subfolders: `LeNet5/` and `ResNet18/`. Each folder holds the implementation details of its respective neural network architecture.
+6. Explore the `models` directory, which contains two subfolders: `LeNet5/` and `ResNet18/`. Each folder holds the implementation details of its respective neural network architecture.
 
-5. Check the `results` directory for result files in .txt format, including metrics such as true positives, false positives, true negatives, false negatives, recall, precision, specificity, and F1-score. These metrics help assess the performance of the trained models on the test set.
+7. Check the `results` directory for result files in .txt format, including metrics such as true positives, false positives, true negatives, false negatives, recall, precision, specificity, and F1-score. These metrics help assess the performance of the trained models on the test set.
 
-6. The best-performing model weights can be found in the `saved_models` directory in .pth file format.
+8. The best-performing model weights can be found in the `saved_models` directory in .pth file format.
 
-7. If you want to visualize images from the dataset, explore the `utils` folder. It contains a Python script named `visualize_data.py` that allows you to visualize and optionally save images.
+9. If you want to visualize images from the dataset, explore the `utils` folder. It contains a Python script named `visualize_data.py` that allows you to visualize and optionally save images.
 
 
 ## License
