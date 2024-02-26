@@ -137,10 +137,9 @@ To use this image classification model for your own projects, follow these steps
   conda activate img_class
   ```
 3. Install the required dependencies by using the provided `requirements.txt` file:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
+  ```bash
+  pip install -r requirements.txt
+  ```
 4. Navigate to the `commands` directory to manage different aspects of the project.
 
    - To initiate the training of a neural network, use `train_model.sh`. It provides options for selecting the neural network architecture and adjusting hyperparameters. For example:
